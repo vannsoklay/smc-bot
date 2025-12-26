@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package smc;
+
+option go_package = "proto/smcpb;smcpb";
+
+service SMCService {
+  rpc Analyze(AnalyzeRequest) returns (AnalyzeResponse);
+}
+
+message AnalyzeRequest {
+  string symbol = 1;
+  string timeframe = 2;
+  string exchange = 3;
+  int32 limit = 4;
+}
+
+message AnalyzeResponse {
+  string symbol = 1;
+  string timeframe = 2;
+  string side = 3;
+  double entry_low = 4;
+  double entry_high = 5;
+  double stop_loss = 6;
+  double take_profit = 7;
+}
